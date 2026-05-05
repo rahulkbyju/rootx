@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rootz Academy – CBSE Math Summer Programs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --surface2: #f3f1ee;
+    --orange: #e85d1a;
+    --orange-light: #f07340;
+    --orange-dim: rgba(232,93,26,0.09);
+    --orange-glow: rgba(232,93,26,0.22);
+    --green: #25d366;
+    --green-dark: #1da851;
+    --green-dim: rgba(37,211,102,0.1);
+    --text: #1a1814;
+    --muted: #6b6860;
+    --border: rgba(0,0,0,0.09);
+    --shadow: rgba(0,0,0,0.06);
+    --radius: 16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1.1; color: var(--text); }
+  a { color: inherit; text-decoration: none; }
+
+  /* DOT PATTERN */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.045) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── WHATSAPP BUTTON ── */
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+    text-decoration: none;
+  }
+  .wa-btn:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.35); }
+  .wa-btn svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+
+  .wa-btn-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: #fff;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    transition: background .2s, transform .15s;
+    box-shadow: 0 3px 12px rgba(37,211,102,0.25);
+    text-decoration: none;
+  }
+  .wa-btn-sm:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .wa-btn-sm svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+
+  /* WA ICON SVG */
+  .wa-icon { display: inline-block; vertical-align: middle; }
+
+  /* FLOATING WA BUTTON */
+  .wa-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--green);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    transition: transform .2s, box-shadow .2s;
+    text-decoration: none;
+  }
+  .wa-float:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.45); }
+  .wa-float svg { width: 22px; height: 22px; fill: #fff; }
+  .wa-float-pulse {
+    position: absolute;
+    top: -4px; right: -4px;
+    width: 14px; height: 14px;
+    background: #ff4444;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    animation: floatPulse 2s infinite;
+  }
+  @keyframes floatPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.3);opacity:0.7} }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(250,249,247,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 12px var(--shadow);
+  }
+
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: -0.02em; color: var(--text); }
+  .logo span { color: var(--orange); }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; font-size: 0.9rem; font-weight: 500; }
+  .nav-links a { color: var(--muted); transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #fff8f4 0%, var(--bg) 55%);
+  }
+
+  .hero-glow {
+    position: absolute; top: -10%; right: -5%;
+    width: 60vw; height: 60vw;
+    background: radial-gradient(ellipse at center, rgba(232,93,26,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; bottom: -20%; left: -10%;
+    width: 40vw; height: 40vw;
+    background: radial-gradient(ellipse at center, rgba(37,211,102,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner { max-width: 780px; position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange-dim);
+    border: 1px solid rgba(232,93,26,0.25);
+    color: var(--orange);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before { content: '◉'; font-size: 0.6rem; animation: pulse 2s infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  h1.hero-title {
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    color: var(--text);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1.hero-title em { color: var(--orange); font-style: normal; }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 580px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-highlight {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s 0.25s ease both;
+  }
+  .highlight-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    box-shadow: 0 1px 4px var(--shadow);
+  }
+  .highlight-chip b { color: var(--orange); }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-ghost {
+    background: #fff;
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: border-color .2s, box-shadow .2s;
+    box-shadow: 0 1px 4px var(--shadow);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: rgba(0,0,0,0.18); box-shadow: 0 4px 12px var(--shadow); }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 56px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--orange); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; position: relative; }
+
+  .section-tag {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: block;
+  }
+  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 16px; color: var(--text); }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 540px; font-weight: 400; }
+  .section-header { margin-bottom: 56px; }
+
+  .divider { width: 60px; height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: 20px; }
+
+  /* PROBLEM */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .problem-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .problem-card:hover { border-color: rgba(232,93,26,0.25); transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow); }
+
+  .problem-icon {
+    width: 44px; height: 44px;
+    background: var(--orange-dim);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 18px;
+  }
+  .problem-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .problem-card p { font-size: 0.9rem; color: var(--muted); }
+
+  .closing-line {
+    background: var(--orange-dim);
+    border-left: 3px solid var(--orange);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+
+  /* SOLUTION */
+  .solution-section { background: var(--surface2); }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .solution-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .solution-item:hover { border-color: rgba(232,93,26,0.25); box-shadow: 0 6px 20px var(--shadow); }
+
+  .sol-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: rgba(232,93,26,0.18); line-height: 1; min-width: 40px; }
+  .sol-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .sol-text p { font-size: 0.88rem; color: var(--muted); }
+
+  /* PROGRAMS */
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .program-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .program-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px var(--shadow); }
+  .program-card.featured { border-color: var(--orange); border-width: 2px; }
+  .program-card.featured::before {
+    content: '⭐ Most Popular';
+    position: absolute;
+    top: -13px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  .program-grade {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .program-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+  .program-tagline { font-size: 0.88rem; color: var(--muted); margin-bottom: 22px; }
+
+  .program-topics {
+    list-style: none;
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .program-topics li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .program-topics li:last-child { border-bottom: none; }
+  .program-topics li::before { content: '→'; color: var(--orange); font-size: 0.8rem; }
+
+  .program-outcome {
+    background: var(--green-dim);
+    border: 1px solid rgba(37,211,102,0.2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    color: #166534;
+    margin-bottom: 22px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .program-outcome::before { content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .program-duration {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .program-duration::before { content: '📅'; font-size: 0.85rem; }
+
+  /* URGENCY */
+  .urgency-section {
+    background: linear-gradient(135deg, #fff5f0 0%, var(--bg) 70%);
+    border-top: 1px solid rgba(232,93,26,0.15);
+    border-bottom: 1px solid rgba(232,93,26,0.15);
+    text-align: center;
+  }
+
+  .urgency-inner { max-width: 620px; margin: 0 auto; }
+  .urgency-inner h2 { margin-bottom: 16px; }
+  .urgency-inner > p { color: var(--muted); margin-bottom: 32px; }
+
+  .urgency-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .urgency-badge {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+    color: var(--text);
+  }
+  .urgency-badge b { color: var(--orange); }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--surface2); }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 40px; height: 40px;
+    background: var(--orange-dim);
+    border: 1px solid rgba(232,93,26,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--orange);
+    flex-shrink: 0;
+  }
+  .step-content h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .step-content p { font-size: 0.88rem; color: var(--muted); }
+
+  /* EXPECTATIONS */
+  .expect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .expect-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 2px 10px var(--shadow);
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .expect-card:hover { border-color: rgba(232,93,26,0.3); transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow); }
+  .expect-icon { font-size: 2.2rem; margin-bottom: 16px; }
+  .expect-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .expect-card p { font-size: 0.85rem; color: var(--muted); }
+
+  /* ABOUT */
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+  .about-visual {
+    background: linear-gradient(145deg, #fff8f4, #fef3ec);
+    border: 1px solid rgba(232,93,26,0.15);
+    border-radius: var(--radius);
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 6rem;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 24px var(--shadow);
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; bottom: -30%; right: -20%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,93,26,0.08), transparent 70%);
+  }
+
+  .about-content h2 { margin-bottom: 20px; }
+  .about-content p { color: var(--muted); margin-bottom: 16px; font-size: 0.95rem; }
+
+  .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .about-tag {
+    background: var(--orange-dim);
+    color: var(--orange);
+    border: 1px solid rgba(232,93,26,0.2);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* FAQ */
+  .faq-section { background: var(--surface2); }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+
+  .faq-question {
+    width: 100%; background: none; border: none;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    text-align: left; padding: 22px 0;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    transition: color .2s;
+  }
+  .faq-question:hover { color: var(--orange); }
+  .faq-icon { color: var(--orange); font-size: 1.2rem; flex-shrink: 0; transition: transform .25s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s; font-size: 0.92rem; color: var(--muted); }
+  .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 20px; }
+
+  /* FINAL CTA */
+  .final-cta {
+    text-align: center;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #fff8f4 0%, var(--bg) 100%);
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(232,93,26,0.10), transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta h2 { font-size: clamp(2rem, 4vw, 3.2rem); max-width: 640px; margin: 0 auto 16px; }
+  .final-cta > div > p { color: var(--muted); margin-bottom: 12px; font-size: 1rem; }
+  .final-reminder { font-size: 0.88rem; color: var(--muted); margin-bottom: 32px !important; }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    border-top: 1px solid var(--border);
+    padding: 40px 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  footer .logo { color: #fff; }
+  footer p { color: rgba(255,255,255,0.45); font-size: 0.85rem; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .solution-grid, .about-inner { grid-template-columns: 1fr; }
+    .wa-float-label { display: none; }
+    .wa-float { padding: 14px; border-radius: 50%; }
+    footer { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .programs-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/971500000000?text=Hi%2C+I%27d+like+to+know+more+about+the+CBSE+Math+summer+programs." class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+  <span class="wa-float-label">Chat on WhatsApp</span>
+  <div class="wa-float-pulse"></div>
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Rootz<span>.</span>Academy</div>
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#instructor">Instructor</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/971500000000?text=Hi%2C+I%27m+interested+in+the+CBSE+Math+summer+programs.+My+child+is+in+Grade+%5BX%5D.+Please+share+details." class="wa-btn-sm" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+    Message Us
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">CBSE Math · Summer 2025</div>
+    <h1 class="hero-title">Get <em>Ahead in Maths</em> Before School Starts</h1>
+    <p class="hero-sub">Structured summer programs for CBSE students entering Grades 9 & 10 — designed to build confidence, clarity, and a strong academic start.</p>
+    <div class="hero-highlight">
+      <span class="highlight-chip">📅 Courses start <b>May 15</b></span>
+      <span class="highlight-chip">👥 <b>Limited seats</b> per batch</span>
+      <span class="highlight-chip">🖥️ Live online classes</span>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/971500000000?text=Hi%2C+I%27m+interested+in+the+CBSE+Math+summer+programs.+My+child+is+in+Grade+%5BX%5D.+Please+share+details." class="wa-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+        Message on WhatsApp
+      </a>
+      <a href="#programs" class="btn-ghost">View Programs ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Specialised Programs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">May 15</div>
+        <div class="stat-label">Batch Start Date</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Small</div>
+        <div class="stat-label">Batches · Personal Attention</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="section-header reveal">
+    <span class="section-tag">The Problem</span>
+    <div class="divider"></div>
+    <h2 class="section-title">Why Most Students Struggle in Grade 9 & 10</h2>
+    <p class="section-sub">The transition is harder than most parents realise — and waiting until school starts is already too late.</p>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <div class="problem-icon">📈</div>
+      <h4>Sudden Difficulty Spike</h4>
+      <p>The jump in Grade 9 Algebra and Geometry catches most students off guard — especially those who coasted through earlier years.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">🧱</div>
+      <h4>Weak Fundamentals</h4>
+      <p>Gaps in concepts from Grades 7 & 8 compound quickly. Without fixing them, every new topic feels impossibly hard.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">🗓️</div>
+      <h4>No Structured Preparation</h4>
+      <p>Most students spend the summer doing nothing — then scramble when school begins. A head start changes everything.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">📉</div>
+      <h4>Early Setbacks Last Long</h4>
+      <p>Falling behind in the first term — especially in the board year — creates a confidence crisis that's hard to recover from.</p>
+    </div>
+  </div>
+  <div class="closing-line reveal">
+    💡 The best students don't catch up later. They start ahead.
+  </div>
+  <div style="text-align:center" class="reveal">
+    <a href="https://wa.me/971500000000?text=Hi%2C+my+child+is+struggling+with+Maths.+Can+you+help+me+find+the+right+program%3F" class="wa-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+      Chat on WhatsApp — Check if This is Right for Your Child
+    </a>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="section-header reveal">
+    <span class="section-tag">Our Approach</span>
+    <div class="divider"></div>
+    <h2 class="section-title">A Smarter Way to Prepare This Summer</h2>
+    <p class="section-sub">Our programs focus on building strong fundamentals, structured learning, and consistent practice — so students enter the academic year with confidence.</p>
+  </div>
+  <div class="solution-grid">
+    <div class="solution-item reveal">
+      <div class="sol-num">01</div>
+      <div class="sol-text">
+        <h4>Concept Clarity Over Rote Learning</h4>
+        <p>We teach the "why" behind every formula and method — so students can apply, not just memorise.</p>
+      </div>
+    </div>
+    <div class="solution-item reveal">
+      <div class="sol-num">02</div>
+      <div class="sol-text">
+        <h4>CBSE-Aligned Progression</h4>
+        <p>Every topic follows the CBSE syllabus structure, preparing students precisely for what comes next in school.</p>
+      </div>
+    </div>
+    <div class="solution-item reveal">
+      <div class="sol-num">03</div>
+      <div class="sol-text">
+        <h4>Small Batches, Personal Attention</h4>
+        <p>Limited seats per batch means every student gets noticed, every question gets answered.</p>
+      </div>
+    </div>
+    <div class="solution-item reveal">
+      <div class="sol-num">04</div>
+      <div class="sol-text">
+        <h4>Weekly Practice & Feedback</h4>
+        <p>Regular assignments and personalised feedback ensure no gap stays hidden for long.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="section-header reveal" style="text-align:center">
+    <span class="section-tag">Summer 2025 Programs</span>
+    <div class="divider" style="margin:0 auto 20px"></div>
+    <h2 class="section-title">Choose the Right Program</h2>
+    <p class="section-sub" style="margin:0 auto">Three focused programs. One goal — give your child a head start.</p>
+  </div>
+  <div class="programs-grid">
+
+    <!-- Program 1 -->
+    <div class="program-card reveal">
+      <div class="program-grade">Grade 8 → 9</div>
+      <h3>Grade 9 Foundation Accelerator</h3>
+      <p class="program-tagline">Start Grade 9 with confidence</p>
+      <ul class="program-topics">
+        <li>Algebra fundamentals</li>
+        <li>Number systems</li>
+        <li>Basic geometry</li>
+        <li>Graphs and problem solving</li>
+      </ul>
+      <p class="program-duration">Duration: 2–3 months · Starting May 15</p>
+      <div class="program-outcome">No more struggling with the basics when school begins</div>
+      <a href="https://wa.me/971500000000?text=Hi%2C+I+want+details+about+the+Grade+9+Foundation+Accelerator." class="wa-btn" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+        Ask on WhatsApp
+      </a>
+    </div>
+
+    <!-- Program 2 -->
+    <div class="program-card featured reveal">
+      <div class="program-grade">Grade 9 → 10</div>
+      <h3>Grade 10 Headstart Program</h3>
+      <p class="program-tagline">Get ahead in your board year</p>
+      <ul class="program-topics">
+        <li>Real numbers</li>
+        <li>Polynomials</li>
+        <li>Linear equations</li>
+        <li>Intro to trigonometry</li>
+      </ul>
+      <p class="program-duration">Duration: 2–3 months · Starting May 15</p>
+      <div class="program-outcome">Enter Grade 10 already prepared — not catching up</div>
+      <a href="https://wa.me/971500000000?text=Hi%2C+I%27m+interested+in+the+Grade+10+Headstart+Program.+Please+share+details." class="wa-btn" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <!-- Program 3 -->
+    <div class="program-card reveal">
+      <div class="program-grade">Grades 9 & 10</div>
+      <h3>Algebra Mastery Program</h3>
+      <p class="program-tagline">Turn Algebra into your strongest topic</p>
+      <ul class="program-topics">
+        <li>Expressions and equations</li>
+        <li>Algebraic identities</li>
+        <li>Word problems</li>
+      </ul>
+      <p class="program-duration">Duration: 2–3 months · Starting May 15</p>
+      <div class="program-outcome">Confidence in solving complex algebraic problems independently</div>
+      <a href="https://wa.me/971500000000?text=Hi%2C+I+want+to+know+more+about+the+Algebra+Mastery+Program." class="wa-btn" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+        Message on WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section class="urgency-section">
+  <div class="urgency-inner reveal">
+    <h2 class="section-title">Batches Starting Soon</h2>
+    <p>We keep batch sizes small intentionally. Once seats are filled, admissions close — and the next batch may be weeks away.</p>
+    <div class="urgency-badges">
+      <div class="urgency-badge">📅 Start date: <b>&nbsp;May 15</b></div>
+      <div class="urgency-badge">👥 <b>Limited seats</b> per batch</div>
+      <div class="urgency-badge">⚠️ Admissions close <b>&nbsp;when full</b></div>
+    </div>
+    <a href="https://wa.me/971500000000?text=Hi%2C+I%27d+like+to+reserve+a+seat+for+the+CBSE+Math+summer+program.+Please+share+details." class="wa-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+      Reserve via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-section">
+  <div class="section-header reveal" style="text-align:center">
+    <span class="section-tag">Simple Process</span>
+    <div class="divider" style="margin:0 auto 20px"></div>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub" style="margin:0 auto">No forms, no friction. Just a quick WhatsApp message to get started.</p>
+  </div>
+  <div class="steps-list reveal">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Message on WhatsApp</h4>
+        <p>Send a quick message — tell us your child's grade and we'll take it from there. No commitment required.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Get Program Details & Guidance</h4>
+        <p>We'll share full details about the right program, batch schedule, and what to expect.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Choose the Right Course</h4>
+        <p>We help you pick the best fit based on your child's current level and goals — no guesswork.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Confirm Enrollment</h4>
+        <p>Secure your child's seat in the batch — before it fills up.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Join Classes Starting May 15</h4>
+        <p>Show up ready to learn. Live, interactive classes with a structured plan from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPECTATIONS -->
+<section>
+  <div class="section-header reveal" style="text-align:center">
+    <span class="section-tag">What to Expect</span>
+    <div class="divider" style="margin:0 auto 20px"></div>
+    <h2 class="section-title">What Parents Can Expect</h2>
+  </div>
+  <div class="expect-grid">
+    <div class="expect-card reveal">
+      <div class="expect-icon">📊</div>
+      <h4>Regular Progress Updates</h4>
+      <p>Stay informed. We share regular updates so you always know how your child is progressing.</p>
+    </div>
+    <div class="expect-card reveal">
+      <div class="expect-icon">🧩</div>
+      <h4>Improved Problem-Solving</h4>
+      <p>Students develop the ability to approach and solve new problems independently — not just familiar ones.</p>
+    </div>
+    <div class="expect-card reveal">
+      <div class="expect-icon">🏗️</div>
+      <h4>Strong Foundation for Exams</h4>
+      <p>A solid base built during the summer translates into better marks throughout the academic year and board exams.</p>
+    </div>
+    <div class="expect-card reveal">
+      <div class="expect-icon">⚡</div>
+      <h4>Increased Confidence in Maths</h4>
+      <p>When understanding replaces confusion, students stop dreading Maths and start approaching it with belief.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section id="instructor" style="background:var(--surface2)">
+  <div class="about-inner">
+    <div class="about-visual reveal">👨‍🏫</div>
+    <div class="about-content reveal">
+      <span class="section-tag">About the Instructor</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Teaching Maths the Way It Should Be Taught</h2>
+      <p>With extensive experience teaching CBSE students across the UAE and India, I've seen exactly where students struggle — and how to fix it before problems compound.</p>
+      <p>My focus is always on fundamentals first. Whether it's Algebra, Geometry, or Trigonometry, I make sure every student understands the concept before moving forward — not just the steps.</p>
+      <p>Small batches are a non-negotiable for me. Every student deserves real attention, not just a seat in a large class.</p>
+      <div class="about-tags">
+        <span class="about-tag">CBSE Specialist</span>
+        <span class="about-tag">UAE & India Experience</span>
+        <span class="about-tag">Concept-First Method</span>
+        <span class="about-tag">Small Batch Expert</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section-header reveal" style="text-align:center">
+    <span class="section-tag">FAQ</span>
+    <div class="divider" style="margin:0 auto 20px"></div>
+    <h2 class="section-title">Common Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Are classes live or recorded?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">All classes are live and interactive — conducted online in small groups. Every session is also recorded so students can revisit anytime, but the primary experience is a live class with real-time Q&A and problem solving.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is the batch size?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Batches are intentionally kept small to ensure every student gets personal attention. This is core to how we teach — a large class defeats the purpose. Message us on WhatsApp to know the current seat availability.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What happens if my child misses a class?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">No problem. Every class is recorded and made available promptly. Students can watch at their own pace and catch up fully without missing any content.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is this suitable for students who are weak in Maths?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Absolutely — in fact, this is exactly who these programs are built for. We start from the foundations and build up systematically. Students who struggled for years often find clarity within the first few sessions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How will parents receive progress updates?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Parents receive regular updates on their child's progress — including performance in weekly practice sessions and areas of improvement. Updates are shared directly via WhatsApp for convenience.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I enroll my child?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Simply message us on WhatsApp. Share your child's current grade and we'll guide you to the right program, share batch details, and confirm enrollment — all over chat. No forms, no hassle.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="reveal">
+    <span class="section-tag" style="display:block; margin-bottom:14px;">Ready to Begin?</span>
+    <h2 class="section-title">Give Your Child a Head Start This Academic Year</h2>
+    <p>📅 Starting May 15 &nbsp;·&nbsp; ⚠️ Limited seats available</p>
+    <p class="final-reminder">One WhatsApp message is all it takes. No forms. No commitment yet — just a conversation.</p>
+    <a href="https://wa.me/971500000000?text=Hi%2C+I%27d+like+to+enroll+my+child+in+a+CBSE+Math+summer+program.+Please+share+the+next+steps." class="wa-btn" style="font-size:1rem; padding:16px 36px;" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.86L.057 23.998l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.886 9.886 0 01-5.031-1.37l-.361-.214-3.741.981.998-3.648-.235-.374A9.86 9.86 0 012.1 12c0-5.463 4.437-9.9 9.9-9.9 5.463 0 9.9 4.437 9.9 9.9 0 5.463-4.437 9.9-9.9 9.9z"/></svg>
+      Message on WhatsApp Now
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Rootz<span>.</span>Academy</div>
+  <p>© 2025 Rootz Academy. All rights reserved.</p>
+  <p>CBSE Math Programs · UAE · India</p>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
